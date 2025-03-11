@@ -1,0 +1,66 @@
+<div class="catalog-container">
+  <div class="title-image-container">
+    <img src="https://static.vecteezy.com/system/resources/previews/009/879/121/non_2x/illustration-in-doodle-style-a-ball-of-wool-and-a-crochet-hook-symbol-of-knitting-crocheting-handmade-hobby-and-needlework-minimalistic-logo-vector.jpg" alt="Crochet1ina" class="title-image">
+  </div>
+  <div class="product-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="product-image-container">
+        <img [src]="product.image" [alt]="product.name" class="product-image">
+        <div class="product-details">
+          <p>{{ product.description }}</p>
+          <p class="price">{{ product.price | currency }}</p>
+          <div class="button-container">
+            <button (click)="selectProduct(product)" class="update-btn">Actualizar</button>
+            <button (click)="deleteProduct(product.id)" class="delete-btn">Eliminar</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-name">
+        {{ product.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating action button for creating new product -->
+<button (click)="openCreateForm()" class="create-fab">
+  <i class="fa fa-plus"></i>
+</button>
+
+<div *ngIf="selectedProduct" class="modal-backdrop" (click)="closeModal($event)">
+  <!-- Modal Content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{{ isEditMode ? 'Actualizar Producto' : 'Crear Producto' }}</h2>
+      <button class="close-btn" (click)="closeModal($event)">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="isEditMode ? updateProduct(selectedProduct) : createProduct(selectedProduct)">
+        <div class="form-group">
+          <label for="productName">Nombre</label>
+          <input id="productName" [(ngModel)]="selectedProduct.name" name="name" placeholder="Nombre del producto" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="productDesc">Descripción</label>
+          <textarea id="productDesc" [(ngModel)]="selectedProduct.description" name="description" placeholder="Descripción del producto" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="productPrice">Precio</label>
+          <input id="productPrice" type="number" [(ngModel)]="selectedProduct.price" name="price" placeholder="0" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="productImage">URL de la imagen</label>
+          <input id="productImage" [(ngModel)]="selectedProduct.image" name="image" placeholder="https://ejemplo.com/imagen.jpg" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="closeModal($event)">Cancelar</button>
+          <button type="submit" class="submit-btn">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
