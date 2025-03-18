@@ -1,0 +1,58 @@
+<div class="app-header">
+  <img src="https://static.vecteezy.com/system/resources/previews/009/879/121/non_2x/illustration-in-doodle-style-a-ball-of-wool-and-a-crochet-hook-symbol-of-knitting-crocheting-handmade-hobby-and-needlework-minimalistic-logo-vector.jpg" alt="Crochet1ina" class="header-logo">
+  <div class="header-title">Crochet Store</div>
+  <div class="header-actions">
+    <div class="cart-icon" (click)="toggleCartMenu()">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="cart-count" *ngIf="cart.length > 0">{{ cart.length }}</span>
+      
+      <!-- Dropdown cart menu -->
+      <div class="cart-dropdown" *ngIf="showCartMenu && cart.length > 0">
+        <h3>Carrito de Compras</h3>
+        <ul class="cart-items">
+          <li *ngFor="let item of cart">
+            <div class="cart-item-info">
+              <span>{{ item.name }}</span>
+              <span>{{ item.price | currency }} × {{ item.quantity }}</span>
+            </div>
+            <button (click)="removeFromCart(item)" class="remove-btn">
+              <i class="fa fa-times"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="cart-total">
+          <p>Total: {{ getTotal() | currency }}</p>
+        </div>
+      </div>
+    </div>
+    <button class="logout-btn" (click)="logout()">
+      Cerrar sesión
+    </button>
+  </div>
+</div>
+
+<div class="catalog-container">
+  <div class="product-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="product-image-container">
+        <img [src]="product.image" [alt]="product.name" class="product-image">
+        <div class="product-details">
+          <p>{{ product.description }}</p>
+          <p class="price">{{ product.price | currency }}</p>
+          <button (click)="addToCart(product)" class="add-to-cart-btn">Agregar al carrito</button>
+        </div>
+      </div>
+      <div class="product-name">
+        {{ product.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="app-footer">
+  <div class="footer-content">
+    <img src="https://static.vecteezy.com/system/resources/previews/009/879/121/non_2x/illustration-in-doodle-style-a-ball-of-wool-and-a-crochet-hook-symbol-of-knitting-crocheting-handmade-hobby-and-needlework-minimalistic-logo-vector.jpg" alt="Crochet Logo" class="footer-logo">
+    <div class="footer-name">Crochet Store</div>
+    <div class="footer-copyright">© 2025 Crochet Store. Todos los derechos reservados.</div>
+    </div>
+</footer>

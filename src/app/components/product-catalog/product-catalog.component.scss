@@ -74,7 +74,7 @@
 }
 
 .title-image-container {
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -261,6 +261,79 @@ input:focus, textarea:focus {
   background-color: #ffff28;
   color: black;
   border: none;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-logo {
+  max-width: 60px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #8e7041;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.logout-section {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #8e7041;
+  border: 1px solid #8e7041;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.logout-btn:hover {
+  background-color: #8e7041;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+  .header-title {
+    display: none;
+  }
+  
+  .logout-text {
+    display: none;
+  }
+  
+  .logout-btn {
+    padding: 8px;
+  }
+  
+  .app-header {
+    padding: 10px;
+  }
 }
 
 /* Add Font Awesome import if not already in your project */

@@ -1,7 +1,16 @@
-<div class="catalog-container">
+<div class="app-header">
   <div class="title-image-container">
-    <img src="https://static.vecteezy.com/system/resources/previews/009/879/121/non_2x/illustration-in-doodle-style-a-ball-of-wool-and-a-crochet-hook-symbol-of-knitting-crocheting-handmade-hobby-and-needlework-minimalistic-logo-vector.jpg" alt="Crochet1ina" class="title-image">
+    <img src="https://static.vecteezy.com/system/resources/previews/009/879/121/non_2x/illustration-in-doodle-style-a-ball-of-wool-and-a-crochet-hook-symbol-of-knitting-crocheting-handmade-hobby-and-needlework-minimalistic-logo-vector.jpg" alt="Crochet1ina" class="header-logo">
   </div>
+
+  <div class="logout-section">
+    <button class="logout-btn" (click)="logout()">
+      <i class="fa fa-sign-out-alt"></i>
+    </button>
+  </div>
+</div>
+
+<div class="catalog-container">
   <div class="product-grid">
     <div *ngFor="let product of products" class="product-card">
       <div class="product-image-container">
